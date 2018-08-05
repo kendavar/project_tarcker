@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends "Optracker/userbase.html"  %}
+  <!-- {% load widget_tweaks %} -->
+  {% block body_block %}
+<p></p>
+<p></p>
+<h2 align="center"> <u> Innovative Ideas Form</u></h2>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<form method="POST">
+ {% csrf_token %}
+ {% for field in form.visible_fields %}
+    <div class="form-group row">
+       <label class="col-sm-2 col-form-label">
+          {{ field.label_tag }}
+       </label>
+       <div class="col-sm-10">
+          {{ field.errors }}
+          {% if field.name == "type_of_idea" %}
+              {% render_field field class="form-control" %}
+          {% elif field.name == "problem_Statement" %}
+              {% render_field field class="form-control" %}
+          {% elif field.name == "description" %}
+              {% render_field field class="form-control" rows="3" %}
+          {% elif field.name == "tool_Impact" %}
+              {% render_field field class="form-control" %}
+          {% elif field.name == "Other_tool" %}
+              {% render_field field class="form-control" placeholder="(If any)" %}
+          {% elif field.name == "process_Impact" %}
+              {% render_field field class="form-control" %}
+          {% elif field.name == "possible_solution" %}
+              {% render_field field class="form-control" rows="3" %}
+          {% elif field.name == "contributors"  %}
+              <div class="input-group-prepend">
+                 {% render_field field class="form-control" placeholder='Email full email' %}
+              </div>
+          {% elif field.name == "submitted_by" %}
+              <div class="input-group-prepend">
+                 {% render_field field class="form-control" placeholder='kendarules@gmail.com' %}
+              </div>
+         {% else %}
+         {% render_field field class="form-control" %}
+          {% endif %}
+          {{ field.help_text }}
+       </div>
+   </div>
+  {% endfor %}
+  <div align="center">
+    <button class="btn btn-primary" type="submit" >Submit</button>
+    <!-- <button class="btn btn-primary" type="submit" value="Refresh" onclick="alert('Form has been submitted')">Submit</button> -->
+    <a href="{% url 'userform' %}" class="btn btn-default">Cancel</a>
+  </div>
+ </form>
+  {% endblock %}

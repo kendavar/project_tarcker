@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% extends "Optracker/base.html"  %}
+<!-- {% load widget_tweaks %} -->
+
+  {% block body_block %}
+  <p></p>
+  <p></p>
+  <p></p>
+  <h2 align="center" > <u> Tasks view</u></h2>
+  <table>
+
+
+  <a style="float:right;"  href="{% url 'export_users_csv' %}" class="btn btn-primary">Export to csv</a>
+  </table>
+    {% for field in dash %}
+
+ <table class="table table-bordered">
+   <tr>
+   <th colspan="2" ><center> Idea Number <a href="{% url 'edit' id=field.id %}">[{{ field.id }} edit]</a></center></th>
+   </tr>
+   <tr>
+     <th scope="row">Problem Statment:</th>
+      <td>{{ field.problem_statement }}</td>
+   </tr>
+   <tr>
+     <th scope="row">Description:</th>
+      <td>{{ field.description }}</td>
+   </tr>
+   <tr>
+     <th scope="row">Severity:</th>
+      <td>{{ field.severity }}</td>
+   </tr>
+   {% if field.status_update != None %}
+   <tr>
+     <th scope="row">Status:</th>
+      <td>{{ field.status }}</td>
+   </tr>
+   {% endif %}
+    {% if field.status_update != None %}
+   <tr>
+     <th scope="row">Status update:</th>
+      <td>{{ field.status_update }}</td>
+   </tr>
+   {% endif %}
+{% if field.status_update != None %}
+   <tr>
+     <th scope="row">Assign to:</th>
+      <td>{{ field.assign_to }}</td>
+   </tr>
+  
+     {% endif %}
+   {% if field.status_update != None %}
+   <tr>
+     <th scope="row">comment:</th>
+      <td>{{ field.comment }}</td>
+   </tr>
+   <tr>
+     {% endif %}
+     <th scope="row">Possible solution:</th>
+      <td>{{ field.possible_solution }}</td>
+   </tr>
+   <tr>
+     <th scope="row">Contributors:</th>
+      <td>{{ field.contributors }}</td>
+   </tr>
+   <tr>
+   <tr>
+     <th scope="row">Submitted by:</th>
+      <td>{{ field.submitted_by }}</td>
+   </tr>
+   <tr>
+     <th colspan="2" ><p style="text-align:left;">Created date: {{ field.created_at }}
+         {% if field.last_updated_at is not None %}
+           <span style="float:right;">Last Updated: {{ field.last_updated_at }}</span>
+       {% endif %}
+
+   </tr>
+ </table  >
+ {% endfor %}
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+        {% if dash.has_other_pages %}
+
+            {% if dash.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ dash.previous_page_number }}" aria-label="Previous">
+                        Previous
+                    </a>
+                </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link disabled"  aria-label="Previous">
+                    Previous
+                </a>
+            </li>
+                <!-- <li class="page-item disabled">
+                  <span aria-hidden="true">&raquo;</span>
+                </li> -->
+            {% endif %}
+            {% for i in dash.paginator.page_range %}
+            {% if dash.number == i %}
+               <li class="page-item active">
+                    <a class="page-link disabled">
+                        {{ i }}
+                    </a>
+              </li>
+            {% else %}
+                <li class="page-item">
+                   <a class="page-link" href="?page={{ i }}">
+                      {{ i }}
+                   </a>
+                </li>
+            {% endif %}
+            {% endfor %}
+            {% if dash.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ dash.next_page_number }}"  aria-label="Next">
+                       <!-- <span class="sr-only">Next</span> -->Next
+                    </a>
+                </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link disabled" aria-label="Next">
+                   <!-- <span class="sr-only">Next</span> -->Next
+                </a>
+            </li>
+                <!-- <li class="page-item disabled"><span aria-hidden="true">&raquo;</span></li> -->
+            {% endif %}
+
+        {% endif %}
+    </ul>
+</nav>
+
+  {% endblock %}

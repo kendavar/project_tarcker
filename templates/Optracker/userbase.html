@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Global Ad Ops - Innovation Ideas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e47911;"><strong>
+    <a class="navbar-brand" href="#" style="display=inline-block;text-overflow;color:#FFFFFF;">Global Ad Ops <h6 style="font-size:70%;">&nbsp;&nbsp;Innovative Ideas</h6></a>
+  </strong>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link " href="{% url 'userform' %}" style="display=inline-block;text-overflow;color:#FFFFFF;"><strong>New Form</strong><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  {% block body_block %}
+  {% endblock %}
+   </div>
+
+     <!--Footer-->
+   <footer class="page-footer font-small blue pt-4 mt-4">
+
+       <!--Footer Links-->
+
+       <!--Copyright-->
+       <div class="footer-copyright py-3 text-center">
+           <div class="container-fluid">
+                <a href=""> In case of suggestions/feedback, contact @aggrajat & @kendavar </a>
+
+           </div>
+       </div>
+       <!--/.Copyright-->
+
+   </footer>
+     </body>
+   </html>

@@ -1,0 +1,18 @@
+#opportunity tracker
+
+#Objectives
+1) Button for download.
+2) Filter buttons
+3) Change Team Name to submitted by and make it Traffiking, booking
+4) Clean form.
+
+15/3/2018
+#problems faced
+-The "in" function in jinga was not working for some reason.One field "submitted_by" had different datatype.Could not figure out what the type is?
+
+#objectives completed
+-1) Remove the last updates and status updates from form_d.          (using exclude in forms)
+-2) If field is None don't add.                                      (using is none or feild.status_update != None. Also, In model columns set attribute null=True)
+-3) Change Team Name to submitted by and make it Traffiking, booking.
+
+
